@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EMPIRe Laboratory</title>
+  <meta name="description" content="EMPIRe Laboratory at UBC Okanagan researches microfluidics, microfabrication, and biomarker detection." />
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=zodiak@400,500,700&display=swap" rel="stylesheet" />
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem; --space-16: 4rem; --space-20: 5rem; --space-24: 6rem;
+      --color-bg: #f6f5f1; --color-surface: #fbfaf7; --color-surface-2: #f1eee8; --color-surface-offset: #e8e3da; --color-border: #d8d3c8; --color-divider: #dcd7cc;
+      --color-text: #1d1d1a; --color-text-muted: #66645d; --color-text-faint: #959189; --color-text-inverse: #faf9f6;
+      --color-primary: #0a6668; --color-primary-hover: #094b4d; --color-primary-highlight: #d8e6e5;
+      --radius-sm: 0.375rem; --radius-md: 0.75rem; --radius-lg: 1rem; --radius-xl: 1.5rem; --radius-full: 9999px;
+      --shadow-sm: 0 1px 2px rgba(18,20,17,.06); --shadow-md: 0 10px 30px rgba(18,20,17,.08); --shadow-lg: 0 20px 48px rgba(18,20,17,.12);
+      --content: 1180px;
+      --font-display: 'Zodiak', Georgia, serif;
+      --font-body: 'General Sans', Inter, sans-serif;
+      --hero-grad: radial-gradient(circle at top left, rgba(10,102,104,.16), transparent 32%), linear-gradient(135deg, rgba(255,255,255,.75), rgba(232,227,218,.65));
+    }
+    [data-theme="dark"] {
+      --color-bg: #141514; --color-surface: #191a18; --color-surface-2: #212320; --color-surface-offset: #262926; --color-border: #333631; --color-divider: #2a2d29;
+      --color-text: #ece8de; --color-text-muted: #b0ab9f; --color-text-faint: #888377; --color-text-inverse: #151614;
+      --color-primary: #63a6ad; --color-primary-hover: #8cc2c7; --color-primary-highlight: #233033;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.25); --shadow-md: 0 10px 30px rgba(0,0,0,.28); --shadow-lg: 0 20px 48px rgba(0,0,0,.36);
+      --hero-grad: radial-gradient(circle at top left, rgba(99,166,173,.18), transparent 34%), linear-gradient(135deg, rgba(33,35,32,.9), rgba(20,21,20,.96));
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme]) {
+        --color-bg: #141514; --color-surface: #191a18; --color-surface-2: #212320; --color-surface-offset: #262926; --color-border: #333631; --color-divider: #2a2d29;
+        --color-text: #ece8de; --color-text-muted: #b0ab9f; --color-text-faint: #888377; --color-text-inverse: #151614;
+        --color-primary: #63a6ad; --color-primary-hover: #8cc2c7; --color-primary-highlight: #233033;
+      }
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:none;text-size-adjust:none}
+    body{font-family:var(--font-body);font-size:var(--text-base);line-height:1.6;background:var(--color-bg);color:var(--color-text)}
+    img,svg{display:block;max-width:100%;height:auto}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit;border:0;background:none;color:inherit;cursor:pointer}
+    :focus-visible{outline:2px solid var(--color-primary);outline-offset:3px;border-radius:var(--radius-sm)}
+    .skip-link{position:absolute;left:var(--space-4);top:-3rem;background:var(--color-primary);color:var(--color-text-inverse);padding:var(--space-2) var(--space-4);border-radius:var(--radius-full);z-index:1000}
+    .skip-link:focus{top:var(--space-4)}
+    .site-shell{max-width:var(--content);margin:0 auto;padding:0 var(--space-4)}
+    .header{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--color-bg) 88%, transparent);backdrop-filter:blur(14px);border-bottom:1px solid color-mix(in srgb, var(--color-text) 10%, transparent)}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);min-height:4.85rem}
+    .brand{display:flex;align-items:center;gap:var(--space-3);min-width:0}
+    .brand-mark{width:3rem;height:3rem;border-radius:var(--radius-md);overflow:hidden;background:var(--color-surface)}
+    .brand-mark img{width:100%;height:100%;object-fit:contain}
+    .brand-copy strong{display:block;font-size:var(--text-sm);letter-spacing:.08em;text-transform:uppercase}
+    .brand-copy span{display:block;font-size:var(--text-xs);color:var(--color-text-muted)}
+    .nav{display:flex;align-items:center;gap:var(--space-5)}
+    .nav-links{display:flex;gap:var(--space-4);font-size:var(--text-sm);color:var(--color-text-muted)}
+    .nav-links a:hover{color:var(--color-text)}
+    .theme-toggle{width:2.75rem;height:2.75rem;display:grid;place-items:center;border-radius:var(--radius-full);border:1px solid color-mix(in srgb, var(--color-text) 10%, transparent);background:var(--color-surface)}
+    .hero{padding:clamp(var(--space-12),8vw,var(--space-24)) 0 var(--space-16)}
+    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:var(--space-8);align-items:end}
+    .hero-card{padding:clamp(var(--space-6),4vw,var(--space-12));background:var(--hero-grad);border:1px solid color-mix(in srgb, var(--color-text) 10%, transparent);border-radius:calc(var(--radius-xl) + .5rem);box-shadow:var(--shadow-lg)}
+    .eyebrow{display:inline-flex;gap:var(--space-2);align-items:center;padding:var(--space-2) var(--space-3);border-radius:var(--radius-full);font-size:var(--text-xs);letter-spacing:.08em;text-transform:uppercase;background:var(--color-primary-highlight);color:var(--color-primary);margin-bottom:var(--space-4)}
+    h1,h2{font-family:var(--font-display);line-height:1.03;letter-spacing:-.03em}
+    h1{font-size:clamp(2.8rem, 6vw, 5.7rem);max-width:10.8ch;margin-bottom:var(--space-4)}
+    h2{font-size:var(--text-2xl)}
+    .hero-copy,.section-intro,.card p,.contact-block p{color:var(--color-text-muted)}
+    .cta-row{display:flex;flex-wrap:wrap;gap:var(--space-3);margin:var(--space-6) 0 var(--space-8)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:2.9rem;padding:0 var(--space-5);border-radius:var(--radius-full);font-size:var(--text-sm)}
+    .btn-primary{background:var(--color-primary);color:var(--color-text-inverse)}
+    .btn-secondary{border:1px solid color-mix(in srgb, var(--color-text) 12%, transparent);background:var(--color-surface)}
+    .stat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--space-3)}
+    .stat{padding:var(--space-4);border-radius:var(--radius-lg);background:color-mix(in srgb, var(--color-surface) 88%, transparent);border:1px solid color-mix(in srgb, var(--color-text) 10%, transparent)}
+    .stat strong{display:block;font-size:var(--text-lg);font-family:var(--font-display)}
+    .logo-panel,.card{background:var(--color-surface);border:1px solid color-mix(in srgb, var(--color-text) 10%, transparent);border-radius:var(--radius-xl);box-shadow:var(--shadow-sm)}
+    .logo-panel{padding:var(--space-5);background:var(--color-surface-2)}
+    .logo-frame{aspect-ratio:16/10;display:grid;place-items:center;padding:var(--space-5);background:var(--color-surface);border-radius:var(--radius-lg)}
+    .logo-frame img{max-height:220px;object-fit:contain}
+    main section{padding:clamp(var(--space-10),7vw,var(--space-20)) 0;border-top:1px solid var(--color-divider)}
+    .section-head{display:grid;grid-template-columns:.9fr 1.1fr;gap:var(--space-8);align-items:end;margin-bottom:var(--space-8)}
+    .kicker{font-size:var(--text-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--color-primary);margin-bottom:var(--space-3)}
+    .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-4)}
+    .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-4)}
+    .card{padding:var(--space-6)}
+    .card h3{font-size:var(--text-lg);margin-bottom:var(--space-3)}
+    .badge{display:inline-flex;padding:var(--space-2) var(--space-3);background:var(--color-primary-highlight);color:var(--color-primary);border-radius:var(--radius-full);font-size:var(--text-xs);letter-spacing:.08em;text-transform:uppercase;margin-bottom:var(--space-4)}
+    .member-footer{display:flex;justify-content:space-between;gap:var(--space-3);align-items:flex-end;margin-top:var(--space-5);padding-top:var(--space-4);border-top:1px solid var(--color-divider)}
+    .member-footer a,.link{color:var(--color-primary)}
+    .project-card{min-height:18rem;display:flex;flex-direction:column}
+    .project-card p{margin-top:auto}
+    .pub-list{display:grid;gap:var(--space-4)}
+    .pub-item{padding:var(--space-5);background:var(--color-surface-2);border-radius:var(--radius-lg);border:1px solid color-mix(in srgb, var(--color-text) 8%, transparent)}
+    .pub-item strong{display:block;margin-bottom:var(--space-2)}
+    .pub-item span{display:block;color:var(--color-text-faint);font-size:var(--text-sm);margin-bottom:var(--space-2)}
+    .contact-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:var(--space-6)}
+    .contact-stack{display:grid;gap:var(--space-4)}
+    footer{padding:var(--space-8) 0 var(--space-12);color:var(--color-text-muted);font-size:var(--text-sm)}
+    @media (max-width: 980px) {
+      .hero-grid,.section-head,.contact-layout{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 720px) {
+      .header-inner{align-items:flex-start;padding:var(--space-3) 0;flex-direction:column}
+      .nav{width:100%;justify-content:space-between}
+      .nav-links{overflow:auto;white-space:nowrap;padding-bottom:var(--space-1)}
+      .grid-3,.grid-2,.stat-grid{grid-template-columns:1fr}
+      .cta-row{flex-direction:column}
+      .btn{width:100%}
+      h1{font-size:clamp(2.4rem, 12vw, 4rem)}
+    }
+    @media (prefers-reduced-motion: reduce) { html{scroll-behavior:auto} *{transition:none !important;animation:none !important} }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="header">
+    <div class="site-shell header-inner">
+      <a class="brand" href="#top" aria-label="EMPIRe Laboratory home">
+        <div class="brand-mark"><img src="./assets/empire-logo.jpg" alt="EMPIRe Laboratory logo" width="96" height="96" loading="eager" decoding="async"></div>
+        <div class="brand-copy">
+          <strong>EMPIRe Laboratory</strong>
+          <span>UBC Okanagan · Microfluidics, microfabrication, biomarker detection</span>
+        </div>
+      </a>
+      <div class="nav">
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="#research">Research</a>
+          <a href="#team">Team</a>
+          <a href="#projects">Projects</a>
+          <a href="#publications">Publications</a>
+          <a href="#alumni">Alumni</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme">
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" id="top">
+      <div class="site-shell hero-grid">
+        <div class="hero-card">
+          <div class="eyebrow">Formerly at KAUST</div>
+          <h1>Microfluidic platforms for biomarker detection and translational measurement.</h1>
+          <p class="hero-copy">EMPIRe Laboratory at UBC Okanagan develops microfluidic devices, microfabrication methods, and low-cost sensing workflows that connect device engineering with biologically meaningful readout.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#team">Meet the group</a>
+            <a class="btn btn-secondary" href="#contact">Contact the lab</a>
+          </div>
+          <div class="stat-grid" aria-label="Research summary">
+            <div class="stat"><strong>4</strong><span>Current members</span></div>
+            <div class="stat"><strong>3</strong><span>Core themes</span></div>
+            <div class="stat"><strong>3</strong><span>Project placeholders</span></div>
+            <div class="stat"><strong>1</strong><span>UBC Okanagan lab home</span></div>
+          </div>
+        </div>
+        <aside class="logo-panel">
+          <div class="logo-frame">
+            <img src="./assets/empire-logo.jpg" alt="EMPIRe Laboratory emblem and wordmark" width="1200" height="675" loading="eager" decoding="async">
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="site-shell">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Research program</div>
+            <h2>Engineering devices, assays, and readout together.</h2>
+          </div>
+          <p class="section-intro">The group works across microfluidics, microfabrication, and biomarker detection, treating chip design, assay flow, and quantitative measurement as one connected research problem.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card"><div class="badge">Microfluidics</div><h3>Controlled flow at small scales</h3><p>Designing channel networks, droplet generation schemes, and compact handling architectures for repeatable assays.</p></article>
+          <article class="card"><div class="badge">Microfabrication</div><h3>Build strategies that support translation</h3><p>Developing fabrication and integration methods that move from prototype devices toward robust laboratory platforms.</p></article>
+          <article class="card"><div class="badge">Biomarker detection</div><h3>Signal pathways with diagnostic value</h3><p>Creating low-cost detection workflows that turn biological interactions into measurable outputs for sensing and monitoring.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="team">
+      <div class="site-shell">
+        <div class="section-head">
+          <div><div class="kicker">Team</div><h2>Current members.</h2></div>
+          <p class="section-intro">The following members are included from the Google Scholar links you provided, with leadership and research roles reflected in the site copy.</p>
+        </div>
+        <div class="grid-2">
+          <article class="card">
+            <div class="badge">Faculty Lead</div>
+            <h3>Dr. Ian G. Foulds</h3>
+            <p><strong>Primary Supervisor</strong></p>
+            <p style="margin-top:var(--space-2)">Associate Professor of Electrical Engineering, University of British Columbia – Okanagan Campus</p>
+            <p style="margin-top:var(--space-3)">Microsystems, MEMS, microfluidics, droplet microfluidics, and polymer microfabrication.</p>
+            <div class="member-footer">
+              <span>Primary Supervisor</span>
+              <a href="https://scholar.google.com/citations?user=KKNIp4MAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+            </div>
+          </article><article class="card">
+            <div class="badge">Graduate Research</div>
+            <h3>Justin Farrell</h3>
+            <p><strong>PhD Candidate and Lab Manager</strong></p>
+            <p style="margin-top:var(--space-2)">The University of British Columbia</p>
+            <p style="margin-top:var(--space-3)">Droplet microfluidics, optical sensing, lab-in-tubing, point-of-care systems, and low-cost diagnostics.</p>
+            <div class="member-footer">
+              <span>PhD Candidate and Lab Manager</span>
+              <a href="https://scholar.google.com/citations?user=5bZ3bdcAAAAJ&amp;hl=en&amp;oi=sra" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+            </div>
+          </article><article class="card">
+            <div class="badge">Microfluidic Systems</div>
+            <h3>Abdul Basit Zia</h3>
+            <p><strong>Researcher</strong></p>
+            <p style="margin-top:var(--space-2)">The University of British Columbia, Okanagan</p>
+            <p style="margin-top:var(--space-3)">Microfluidics, MEMS, control systems, and programmable assay platforms.</p>
+            <div class="member-footer">
+              <span>Researcher</span>
+              <a href="https://scholar.google.com/citations?user=0JO_d-QAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+            </div>
+          </article><article class="card">
+            <div class="badge">Data &amp; AI</div>
+            <h3>Rohith Jayaraman Krishnamurthy</h3>
+            <p><strong>Researcher</strong></p>
+            <p style="margin-top:var(--space-2)">The University of British Columbia</p>
+            <p style="margin-top:var(--space-3)">AI-enabled sensing, waveform-aware analysis, and intelligent data workflows connected to experimental platforms.</p>
+            <div class="member-footer">
+              <span>Researcher</span>
+              <a href="https://scholar.google.com/citations?user=9MEddzIAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="site-shell">
+        <div class="section-head">
+          <div><div class="kicker">Projects</div><h2>Active directions and future additions.</h2></div>
+          <p class="section-intro">These placeholders give you editable space for three flagship projects while keeping the website complete and ready to publish now.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card project-card"><div class="badge">Project</div><h3>Project Placeholder 01</h3><p>Add a short description of a flagship project, the biological question it addresses, and the device or assay approach used.</p></article><article class="card project-card"><div class="badge">Project</div><h3>Project Placeholder 02</h3><p>Use this card for an active collaboration, translational prototype, or instrumentation-focused microfabrication project.</p></article><article class="card project-card"><div class="badge">Project</div><h3>Project Placeholder 03</h3><p>Reserve this space for a biomarker detection program, data-driven sensing workflow, or student-led development effort.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="site-shell">
+        <div class="section-head">
+          <div><div class="kicker">Publications</div><h2>Representative work from the group.</h2></div>
+          <p class="section-intro">This section uses papers visible from the supplied Scholar profiles to anchor the site with real publication examples across droplet generation, low-cost sensing, and data-enabled assay analysis.</p>
+        </div>
+        <div class="pub-list">
+          <article class="pub-item"><strong>Automated dynamic inlet microfluidics system: 3D printer adaptation for cost-effective, low volume, on-demand multi-analyte droplet generator</strong><span>A. B. Zia, J. Farrell, I. G. Foulds · Lab on a Chip · 2024</span><p>A representative project linking low-cost hardware adaptation with on-demand droplet generation for microfluidic assays.</p></article><article class="pub-item"><strong>Low-cost optical transmittance measurements for the detection and quantification of agglutination in dual-phase lab-in-tubing microfluidics</strong><span>J. Farrell, A. B. Zia, I. G. Foulds · IEEE Sensors Letters · 2023</span><p>An example of low-cost biomarker assay readout using optical transmittance in a compact fluidic format.</p></article><article class="pub-item"><strong>Waveform-aware deep learning for quantitative agglutination on a low-cost lab-in-tubing microfluidic platform</strong><span>R. J. Krishnamurthy, J. Farrell, A. B. Zia, A. S. Milani, I. G. Foulds · 2026</span><p>A recent direction combining machine learning with low-cost microfluidic sensing and agglutination analysis.</p></article><article class="pub-item"><strong>Three-dimensional parallelization of microfluidic droplet generators for a litre per hour volume production of single emulsions</strong><span>D. Conchouso, D. Castro, S. A. Khan, I. G. Foulds · Lab on a Chip · 2014</span><p>A widely cited microfluidics contribution showing scalable droplet generation architecture.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="alumni">
+      <div class="site-shell">
+        <div class="section-head">
+          <div><div class="kicker">Alumni</div><h2>Past lab members.</h2></div>
+          <p class="section-intro">Placeholder entries are included so you can add former students, trainees, and research staff later without redesigning the page.</p>
+        </div>
+        <div class="grid-2">
+          <article class="card"><div class="badge">Alumni placeholder</div><h3>Alumni Placeholder 01</h3><p>Add former role, dates with the group, and current destination or institution here.</p></article><article class="card"><div class="badge">Alumni placeholder</div><h3>Alumni Placeholder 02</h3><p>Add former role, dates with the group, and current destination or institution here.</p></article><article class="card"><div class="badge">Alumni placeholder</div><h3>Alumni Placeholder 03</h3><p>Add former role, dates with the group, and current destination or institution here.</p></article><article class="card"><div class="badge">Alumni placeholder</div><h3>Alumni Placeholder 04</h3><p>Add former role, dates with the group, and current destination or institution here.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="site-shell">
+        <div class="section-head">
+          <div><div class="kicker">Contact</div><h2>Get in touch with the lab.</h2></div>
+          <p class="section-intro">The contact block is filled with the institutional details and preferred contact information you provided, ready for publication.</p>
+        </div>
+        <div class="contact-layout">
+          <article class="card contact-block">
+            <div class="badge">Preferred contact</div>
+            <h3>Dr. Ian Foulds</h3>
+            <p><a class="link" href="mailto:Ian.Foulds@ubc.ca">Ian.Foulds@ubc.ca</a></p>
+            <p style="margin-top:var(--space-4)">EMPIRe Laboratory<br>UBC Okanagan<br>EME 1215-2<br>3333 University Way<br>Kelowna BC</p>
+          </article>
+          <div class="contact-stack">
+            <article class="card"><div class="badge">Institution</div><h3>UBC Okanagan</h3><p>Current institutional home for the group, with the site retaining a note that the lab was formerly based at KAUST.</p></article>
+            <article class="card"><div class="badge">Opportunities</div><h3>Students and collaborators</h3><p>Add application details, collaborator inquiries, equipment access notes, or project-specific recruiting information here.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="site-shell">
+      <p>EMPIRe Laboratory · UBC Okanagan · Single-page HTML website for easy editing and deployment.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const toggle = document.querySelector('[data-theme-toggle]');
+      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', theme);
+      const icons = {
+        dark: '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>',
+        light: '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>'
+      };
+      function render() {
+        toggle.innerHTML = theme === 'dark' ? icons.dark : icons.light;
+        toggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+      }
+      render();
+      toggle.addEventListener('click', function () {
+        theme = theme === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', theme);
+        render();
+      });
+    })();
+  </script>
+</body>
+</html>
